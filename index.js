@@ -42,5 +42,5 @@ app.post("/contact", function (req, response) {
 	sendpulse.smtpSendMail(answerGetter, email)
 	response.sendStatus(200)
 })
-const port = process.env.port || 3000
+const port = process.env.port
 app.listen(port, () => console.log(`app1 listening port ${port}`))
