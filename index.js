@@ -13,7 +13,7 @@ var cors = require("cors")
 const app = express()
 app.use(bodyParser.json(), cors())
 
-app.post("/contact", function (req, response) {
+app.post("contact", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
