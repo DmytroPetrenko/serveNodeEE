@@ -43,4 +43,4 @@ app.post("/contact", function (req, response) {
 	response.sendStatus(200)
 })
 const port = process.env.PORT || 3000
-app.listen(port, () => console.log(`app listening port ${PORT}`))
+app.listen(port, () => console.log(`app listening port ${port}`))
