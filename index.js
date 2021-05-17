@@ -11,7 +11,9 @@ const bodyParser = require("body-parser")
 var cors = require("cors")
 
 const app = express()
-app.use(bodyParser.json(), cors())
+app.use(cors())
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post("/contact", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
