@@ -50,6 +50,25 @@ app.post("/checkout", function (req, response) {
 		console.log("Sended")
 	}
 	console.log(req.body)
+
+	var table = function () {
+		var str = `<table>
+	<tr>
+		<td>Item name</td>
+		<td>Item price</td>
+		<td>Item quantity</td>
+	</tr>
+	`
+		for (let i = 0; i < req.body.productTitles.length; i++) {
+			str += `<tr>
+			<td>${req.body.productTitles[i]}</td>
+			<td>${req.body.productPrices[i]}</td>
+			<td>${req.body.productQuantities[i]}</td>
+		</tr>`
+		}
+		str += `</table>`
+	}
+
 	var email = {
 		text: req.body.phone,
 		html: `<b>Name: ${req.body.name}</b>
@@ -57,7 +76,8 @@ app.post("/checkout", function (req, response) {
 			<p>Contact email: ${req.body.email}</p>
 			<p>Country: ${req.body.country}</p>
 			<p>Total Price: ${req.body.total}</p>
-			<p>Product List: ${req.body.products.toString()}</p>`,
+			<p>Product Table: </p>
+			${table()}`,
 		subject: "Shop Message",
 		from: {
 			name: "Electric Engines",
