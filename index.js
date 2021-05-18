@@ -20,8 +20,8 @@ app.post("/contact", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
-	var answerGetter = function () {
-		console.log("Sended")
+	var answerGetter = function (data) {
+		console.log(data)
 	}
 	console.log(req.body)
 	var email = {
