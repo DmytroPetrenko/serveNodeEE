@@ -57,7 +57,7 @@ app.post("/checkout", function (req, response) {
 			<p>Contact email: ${req.body.email}</p>
 			<p>Country: ${req.body.country}</p>
 			<p>Total Price: ${req.body.total}</p>
-			<p>Product List: ${req.body.products}</p>`,
+			<p>Product List: ${req.body.products.toString()}</p>`,
 		subject: "Shop Message",
 		from: {
 			name: "Electric Engines",
