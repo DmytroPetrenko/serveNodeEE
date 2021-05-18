@@ -16,10 +16,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post("/contact", function (req, response) {
+	console.log(req)
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
-	console.log("User ID: " + API_USER_ID)
 	var answerGetter = function () {
 		console.log("Sended")
 	}
