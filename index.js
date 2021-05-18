@@ -22,7 +22,7 @@ app.post("/contact", function (req, response) {
 	var answerGetter = function () {
 		console.log("Sended")
 	}
-
+	console.log(req.body)
 	var email = {
 		text: req.body.message,
 		html: `<b>Name: ${req.body.name}</b>
