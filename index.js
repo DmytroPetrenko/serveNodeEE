@@ -67,6 +67,7 @@ app.post("/checkout", function (req, response) {
 		</tr>`
 		}
 		str += `</table>`
+		return str
 	}
 
 	var email = {
