@@ -41,6 +41,7 @@ app.post("/contact", function (req, response) {
 			},
 		],
 	}
+	console.log(email)
 	sendpulse.smtpSendMail(answerGetter, email)
 	response.sendStatus(200)
 })
