@@ -19,6 +19,7 @@ app.post("/contact", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
+	console.log("User ID: " + API_USER_ID)
 	var answerGetter = function () {
 		console.log("Sended")
 	}
