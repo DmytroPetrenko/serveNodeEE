@@ -20,7 +20,6 @@ app.post("/contact", function (req, response) {
 	var answerGetter = function () {
 		console.log("Sended")
 	}
-	console.log(req.body)
 	var email = {
 		text: req.body.message,
 		html: `<b>Name: ${req.body.name}</b>
@@ -42,5 +41,38 @@ app.post("/contact", function (req, response) {
 	sendpulse.smtpSendMail(answerGetter, email)
 	response.sendStatus(200)
 })
+
+app.post("/checkout", function (req, response) {
+	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
+		console.log("your token: " + token)
+	})
+	var answerGetter = function () {
+		console.log("Sended")
+	}
+	var email = {
+		text: req.body.phone,
+		html: `<b>Name: ${req.body.name}</b>
+			<p>Phone: ${req.body.phone}</p>
+			<p>Contact email: ${req.body.email}</p>
+			<p>Country: ${req.body.country}</p>
+			<p>Total Price: ${req.body.total}</p>
+			<p>Product List: ${req.body.products}</p>`,
+		subject: "Shop Message",
+		from: {
+			name: "Electric Engines",
+			email: "shop@electricengines.com.ua",
+		},
+		to: [
+			{
+				name: "Electric Engines",
+				email: "electricenginescar@gmail.com",
+			},
+		],
+	}
+
+	sendpulse.smtpSendMail(answerGetter, email)
+	response.sendStatus(200)
+})
+
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`app listening port ${port}`))
