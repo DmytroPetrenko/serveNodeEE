@@ -49,6 +49,7 @@ app.post("/checkout", function (req, response) {
 	var answerGetter = function () {
 		console.log("Sended")
 	}
+	console.log(req.body)
 	var email = {
 		text: req.body.phone,
 		html: `<b>Name: ${req.body.name}</b>
