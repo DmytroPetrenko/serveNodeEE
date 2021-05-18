@@ -2,8 +2,8 @@ var sendpulse = require("sendpulse-api")
 /*
  * https://login.sendpulse.com/settings/#api
  */
-var API_USER_ID = "d9f68537207838915515538643ed987e"
-var API_SECRET = "ef199afd79484fbdf48b6649eda00700"
+var API_USER_ID = process.env.API_USER_ID
+var API_SECRET = process.env.API_SECRET
 var TOKEN_STORAGE = "/tmp/"
 
 const express = require("express")
