@@ -49,7 +49,6 @@ app.post("/checkout", function (req, response) {
 	var answerGetter = function () {
 		console.log("Sended")
 	}
-	console.log(req.body)
 
 	var table = function () {
 		var str = `<table>
