@@ -7,21 +7,18 @@ var API_SECRET = process.env.API_SECRET
 var TOKEN_STORAGE = "/tmp/"
 
 const express = require("express")
-//const bodyParser = require("body-parser")
 var cors = require("cors")
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-//app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post("/contact", function (req, response) {
-	console.log(req.body)
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
-	var answerGetter = function (data) {
-		console.log(data)
+	var answerGetter = function () {
+		console.log("Sended")
 	}
 	console.log(req.body)
 	var email = {
@@ -42,7 +39,6 @@ app.post("/contact", function (req, response) {
 			},
 		],
 	}
-	console.log(email)
 	sendpulse.smtpSendMail(answerGetter, email)
 	response.sendStatus(200)
 })
