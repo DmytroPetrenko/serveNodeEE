@@ -56,6 +56,7 @@ app.post("/checkout", function (req, response) {
 		<td>Item name</td>
 		<td>Item price</td>
 		<td>Item quantity</td>
+		<td>Config</td>
 	</tr>
 	`
 		for (let i = 0; i < req.body.productTitles.length; i++) {
@@ -63,6 +64,7 @@ app.post("/checkout", function (req, response) {
 			<td>${req.body.productTitles[i]}</td>
 			<td>${req.body.productPrices[i]}</td>
 			<td>${req.body.productQuantities[i]}</td>
+			<td>${req.body.productConfig[i]}</td>
 		</tr>`
 		}
 		str += `</table>`
