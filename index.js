@@ -53,6 +53,7 @@ app.post("/checkout", function (req, response) {
 
 	var table = function () {
 		let str = ""
+		console.log(req.body.productConfig)
 		if (req.body.productConfig) {
 			str += `<table>
 	<tr>
