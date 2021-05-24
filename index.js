@@ -17,8 +17,9 @@ app.post("/contact", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
-	var answerGetter = function () {
-		console.log("Sended")
+	var answerGetter = function (data) {
+		console.log(data)
+		response.send(data)
 	}
 	var email = {
 		text: req.body.message,
@@ -39,7 +40,6 @@ app.post("/contact", function (req, response) {
 		],
 	}
 	sendpulse.smtpSendMail(answerGetter, email)
-	response.sendStatus(200)
 })
 
 app.post("/checkout", function (req, response) {
