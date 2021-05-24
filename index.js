@@ -46,15 +46,15 @@ app.post("/checkout", function (req, response) {
 	sendpulse.init(API_USER_ID, API_SECRET, TOKEN_STORAGE, function (token) {
 		console.log("your token: " + token)
 	})
-	var answerGetter = function () {
+	var answerGetter = function (data) {
 		console.log(data)
 		response.send(data)
 	}
 
 	var table = function () {
-		var str = ""
+		let str = ""
 		if (req.body.productConfig) {
-			;`<table>
+			str += `<table>
 	<tr>
 		<td>Item name</td>
 		<td>Item price</td>
@@ -71,7 +71,7 @@ app.post("/checkout", function (req, response) {
 		</tr>`
 			}
 		} else {
-			;`<table>
+			str += `<table>
 		<tr>
 			<td>Item name</td>
 			<td>Item price</td>
