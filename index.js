@@ -47,11 +47,14 @@ app.post("/checkout", function (req, response) {
 		console.log("your token: " + token)
 	})
 	var answerGetter = function () {
-		console.log("Sended")
+		console.log(data)
+		response.send(data)
 	}
 
 	var table = function () {
-		var str = `<table>
+		var str = ""
+		if (req.body.productConfig) {
+			;`<table>
 	<tr>
 		<td>Item name</td>
 		<td>Item price</td>
@@ -59,14 +62,31 @@ app.post("/checkout", function (req, response) {
 		<td>Config</td>
 	</tr>
 	`
-		for (let i = 0; i < req.body.productTitles.length; i++) {
-			str += `<tr>
+			for (let i = 0; i < req.body.productTitles.length; i++) {
+				str += `<tr>
 			<td>${req.body.productTitles[i]}</td>
 			<td>${req.body.productPrices[i]}</td>
 			<td>${req.body.productQuantities[i]}</td>
 			<td>${req.body.productConfig[i]}</td>
 		</tr>`
+			}
+		} else {
+			;`<table>
+		<tr>
+			<td>Item name</td>
+			<td>Item price</td>
+			<td>Item quantity</td>
+		</tr>
+		`
+			for (let i = 0; i < req.body.productTitles.length; i++) {
+				str += `<tr>
+				<td>${req.body.productTitles[i]}</td>
+				<td>${req.body.productPrices[i]}</td>
+				<td>${req.body.productQuantities[i]}</td>
+			</tr>`
+			}
 		}
+
 		str += `</table>`
 		return str
 	}
@@ -94,7 +114,6 @@ app.post("/checkout", function (req, response) {
 	}
 
 	sendpulse.smtpSendMail(answerGetter, email)
-	response.sendStatus(200)
 })
 
 const port = process.env.PORT || 3000
